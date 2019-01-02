@@ -1,0 +1,7 @@
+apiVersion: golang.endaphelan.me/v1alpha1
+kind: Golang
+metadata:
+  name: example-golang
+spec:
+  # Add fields here
+  size: 3
