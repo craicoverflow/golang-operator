@@ -179,8 +179,8 @@ func (r *ReconcileGolang) deploymentForGo(g *golangv1alpha1.Golang) *appsv1.Depl
 				},
 				Spec: corev1.PodSpec{
 					Containers: []corev1.Container{{
-						Image: "quay.io/ephelan/go-hello-world:0.0.1",
-						Name:  "go-hello-world",
+						Image: g.Spec.Image,
+						Name:  g.Spec.Name,
 					}},
 				},
 			},

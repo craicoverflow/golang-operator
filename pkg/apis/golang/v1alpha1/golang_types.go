@@ -12,6 +12,8 @@ type GolangSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file
 	Size int32  `json:"size"`
+	Name string `json:"name"`
+	Image string `json:"image"`
 }
 
 // GolangStatus defines the observed state of Golang
