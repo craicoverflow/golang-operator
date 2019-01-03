@@ -90,7 +90,7 @@ func (r *ReconcileGolang) Reconcile(request reconcile.Request) (reconcile.Result
 	reqLogger := log.WithValues("Request.Namespace", "Request.Name", request.Name)
 	reqLogger.Info("Reconciling Golang")
 
-	// Fetch the Memcached instance
+	// Fetch the Golang instance
 	golang := &golangv1alpha1.Golang{}
 	err := r.client.Get(context.TODO(), request.NamespacedName, golang)
 	if err != nil {
@@ -130,8 +130,8 @@ func (r *ReconcileGolang) Reconcile(request reconcile.Request) (reconcile.Result
 		return reconcile.Result{Requeue: true}, nil
 	}
 
-	// Update the Memcached status with the pod names
-	// List the pods for this memcached's deployment
+	// Update the Golang status with the pod names
+	// List the pods for this golang's deployment
 	podList := &corev1.PodList{}
 	labelSelector := labels.SelectorFromSet(labelsForGolang(golang.Name))
 	listOpts := &client.ListOptions{Namespace: golang.Namespace, LabelSelector: labelSelector}
@@ -147,7 +147,7 @@ func (r *ReconcileGolang) Reconcile(request reconcile.Request) (reconcile.Result
 		golang.Status.Nodes = podNames
 		err := r.client.Status().Update(context.TODO(), golang)
 		if err != nil {
-			reqLogger.Error(err, "failed to update Memcached status")
+			reqLogger.Error(err, "failed to update Golang status")
 			return reconcile.Result{}, err
 		}
 	}
@@ -183,14 +183,14 @@ func (r *ReconcileGolang) deploymentForGo(g *golangv1alpha1.Golang) *appsv1.Depl
 						Name:  g.Spec.Name,
 						Ports: []corev1.ContainerPort{{
 							ContainerPort: 8080,
-							Name: g.Name,
+							Name:          g.Name,
 						}},
 					}},
 				},
 			},
 		},
 	}
-	// set Memcached instance as the owner and controller
+	// set Golang instance as the owner and controller
 	controllerutil.SetControllerReference(g, dep, r.scheme)
 	return dep
 }
