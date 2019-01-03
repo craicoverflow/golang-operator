@@ -16,6 +16,15 @@ type GolangSpec struct {
 	ContainerPort int32 `json:"containerPort"`
 }
 
+func (g *GolangSpec) ContainerPortVal() *int32 {
+	val := g.ContainerPort
+	if (&val != nil) {
+		return &val
+	}
+
+	return nil
+}
+
 // GolangStatus defines the observed state of Golang
 type GolangStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster

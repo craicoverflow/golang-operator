@@ -15,7 +15,7 @@ spec:
       serviceAccountName: golang-operator
       containers:
         - name: golang-operator
-          image: quay.io/ephelan/golang-operator:v0.0.6
+          image: quay.io/ephelan/golang-operator:v0.0.7
           ports:
           - containerPort: 60000
             name: metrics

@@ -183,7 +183,7 @@ func (r *ReconcileGolang) deploymentForGo(g *golangv1alpha1.Golang) *appsv1.Depl
 						Name:  g.Name,
 						Ports: []corev1.ContainerPort{{
 							Name:          g.Name,
-							ContainerPort: g.Spec.ContainerPort,
+							ContainerPort: *g.Spec.ContainerPortVal(),
 						}},
 					}},
 				},
