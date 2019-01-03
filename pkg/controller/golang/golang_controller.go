@@ -183,7 +183,7 @@ func (r *ReconcileGolang) deploymentForGo(g *golangv1alpha1.Golang) *appsv1.Depl
 						Name:  g.Spec.Name,
 						Ports: []corev1.ContainerPort{{
 							ContainerPort: 8080,
-							Name: "go-hello-world",
+							Name: g.Name,
 						}},
 					}},
 				},
