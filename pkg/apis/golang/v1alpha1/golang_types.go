@@ -20,7 +20,7 @@ type GolangSpec struct {
 type GolangStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file
-	Pods []string `json:"pods"`
+	Nodes []string `json:"pods"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

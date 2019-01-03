@@ -143,8 +143,8 @@ func (r *ReconcileGolang) Reconcile(request reconcile.Request) (reconcile.Result
 	podNames := getPodNames(podList.Items)
 
 	// Update status.Pods if needed
-	if !reflect.DeepEqual(podNames, golang.Status.Pods) {
-		golang.Status.Pods = podNames
+	if !reflect.DeepEqual(podNames, golang.Status.Nodes) {
+		golang.Status.Nodes = podNames
 		err := r.client.Status().Update(context.TODO(), golang)
 		if err != nil {
 			reqLogger.Error(err, "failed to update Memcached status")
@@ -181,6 +181,10 @@ func (r *ReconcileGolang) deploymentForGo(g *golangv1alpha1.Golang) *appsv1.Depl
 					Containers: []corev1.Container{{
 						Image: g.Spec.Image,
 						Name:  g.Spec.Name,
+						Ports: []corev1.ContainerPort{{
+							ContainerPort: 8080,
+							Name: "go-hello-world",
+						}},
 					}},
 				},
 			},
