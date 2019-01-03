@@ -14,6 +14,8 @@ Before running the operator, the CRD must be registered with the Kubernetes apis
 kubectl apply -f deploy/crds/golang_v1alpha1_golang_crd.yaml
 ```
 
+Setup RBAC and deploy the golang-operator:
+
 ```sh
 kubectl apply -f deploy/service_account.yaml
 kubectl apply -f deploy/role.yaml
