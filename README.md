@@ -59,11 +59,11 @@ golang-operator-5f4c5c675b-j7ff7   1/1       Running   1          6m
 
 You can copy or customise the example CR to suit your own application.
 
-Custom Field | Description | Required
---- | --- | --- | ---
-`spec.size` | The number of pods you wish to be created | Yes
-`spec.image` | Docker image of your Go application |  Yes
-`spec.containerPort` | Port that your Docker application runs on | No
+| Custom Field | Description | Required |
+| --- | --- | --- | --- |
+`spec.size` | The number of pods you wish to be created | Yes |
+`spec.image` | Docker image of your Go application |  Yes |
+`spec.containerPort` | Port that your Docker application runs on | No |
 
 ## Development setup
 
