@@ -5,5 +5,5 @@ metadata:
 spec:
   # Add fields here
   size: 1
-  image: quay.io/ephelan/go-hello-world:v0.0.5
-  name: go-hello-world
+  image: quay.io/ephelan/go-hello-world:v0.0.6
+  containerPort: 8080

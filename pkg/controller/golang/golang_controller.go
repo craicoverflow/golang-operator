@@ -180,10 +180,10 @@ func (r *ReconcileGolang) deploymentForGo(g *golangv1alpha1.Golang) *appsv1.Depl
 				Spec: corev1.PodSpec{
 					Containers: []corev1.Container{{
 						Image: g.Spec.Image,
-						Name:  g.Spec.Name,
+						Name:  g.Name,
 						Ports: []corev1.ContainerPort{{
-							ContainerPort: 8080,
 							Name:          g.Name,
+							ContainerPort: g.Spec.ContainerPort,
 						}},
 					}},
 				},
