@@ -1,5 +1,7 @@
 # Golang Operator
 
+Go (golang) operator for Kubernetes.
+
 ## Installation
 
 Here's what you need to do if you just want to install this operator.
@@ -9,20 +11,20 @@ Here's what you need to do if you just want to install this operator.
 Before running the operator, the CRD must be registered with the Kubernetes apiserver:
 
 ```sh
-oc apply -f deploy/crds/golang_v1alpha1_golang_crd.yaml
+kubectl apply -f deploy/crds/golang_v1alpha1_golang_crd.yaml
 ```
 
 ```sh
-oc apply -f deploy/service_account.yaml
-oc apply -f deploy/role.yaml
-oc apply -f deploy/role_binding.yaml
-oc apply -f deploy/operator.yaml
+kubectl apply -f deploy/service_account.yaml
+kubectl apply -f deploy/role.yaml
+kubectl apply -f deploy/role_binding.yaml
+kubectl apply -f deploy/operator.yaml
 ```
 
 Verify that the `golang-operator` is up and running:
 
 ```sh
-> oc get deploy
+> kubectl get deploy
 NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 golang-operator   1         1         1            1           1m
 ```
@@ -32,13 +34,13 @@ golang-operator   1         1         1            1           1m
 Create the example `Golang` CR that was generated at `deploy/crds/golang_v1alpha1_golang_cr.yaml`:
 
 ```sh
-oc apply -f deploy/crd/golang_v1alpha1_golang_cr.yaml
+kubectl apply -f deploy/crd/golang_v1alpha1_golang_cr.yaml
 ```
 
 Verify that the `golang-operator` creates the deployment for the CR:
 
 ```sh
-> oc get deploy
+> kubectl get deploy
 NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 go-hello-world    1         1         1            1           3m
 golang-operator   1         1         1            1           4m
@@ -47,7 +49,7 @@ golang-operator   1         1         1            1           4m
 Check the pods and CR status to confirm the status is updated with the `golang` pod names:
 
 ```sh
-> oc get pods
+> kubectl get pods
 NAME                               READY     STATUS    RESTARTS   AGE
 go-hello-world-7c67d65476-9l6lk    1/1       Running   0          5m
 golang-operator-5f4c5c675b-j7ff7   1/1       Running   1          6m
